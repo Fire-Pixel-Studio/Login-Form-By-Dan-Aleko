@@ -19,7 +19,7 @@ body {
   position: absolute;
   top: 15vh;
   text-align: center;
-  font-size: 24px;
+  font-size: 42px;
   font-weight: 500;
   color: #fff;
   width: 100%;
@@ -145,7 +145,7 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .slogan {
-    font-size: 20px;
+    font-size: 36px;
     top: 10vh;
   }
 
@@ -169,7 +169,7 @@ body {
 
 @media (max-width: 480px) {
   .slogan {
-    font-size: 18px;
+    font-size: 30px;
     top: 8vh;
   }
 
