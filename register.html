@@ -37,43 +37,45 @@
   </div>
   <img src="Feplix-F.png" class="logo-bottom-right" alt="Feplix Logo Bottom Right"/>
 
-  <!-- Firebase Auth -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyCyE9XQwWP87JV9dz1z--890lM2RmP7k5w",
-      authDomain: "feplix-login-data-server-001.firebaseapp.com",
-      projectId: "feplix-login-data-server-001",
-      storageBucket: "feplix-login-data-server-001.firebasestorage.app",
-      messagingSenderId: "147675628478",
-      appId: "1:147675628478:web:171304d8e48b3f12406fef",
-      measurementId: "G-5XV4F9V8PP"
-    };
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
 
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCyE9XQwWP87JV9dz1z--890lM2RmP7k5w",
+    authDomain: "feplix-login-data-server-001.firebaseapp.com",
+    projectId: "feplix-login-data-server-001",
+    storageBucket: "feplix-login-data-server-001.firebasestorage.app",
+    messagingSenderId: "147675628478",
+    appId: "1:147675628478:web:171304d8e48b3f12406fef",
+    measurementId: "G-5XV4F9V8PP"
+  };
 
-    document.getElementById('register-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const email = document.querySelector('input[placeholder="Email"]').value;
-      const password = document.querySelector('input[placeholder="Password"]').value;
-      const confirmPassword = document.querySelector('input[placeholder="Confirm Password"]').value;
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-      if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-      }
+  document.getElementById('register-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.querySelector('input[placeholder="Email"]').value;
+    const password = document.querySelector('input[placeholder="Password"]').value;
+    const confirmPassword = document.querySelector('input[placeholder="Confirm Password"]').value;
 
-      auth.createUserWithEmailAndPassword(email, password)
-        .then(() => {
-          alert("Registration successful!");
-          window.location.href = "index.html";
-        })
-        .catch(error => {
-          alert("Error: " + error.message);
-        });
-    });
-  </script>
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        // Redirect to home on success
+        window.location.href = "home.html";
+      })
+      .catch(error => {
+        alert("Registration failed: " + error.message);
+      });
+  });
+</script>
+
 </body>
 </html>
