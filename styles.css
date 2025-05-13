@@ -41,6 +41,14 @@ body {
   text-align: center;
 }
 
+.wrapper .feplix-text {
+  font-size: 24px; /* 36px / 1.5 */
+}
+
+.wrapper .feplix-color {
+  color: #E50914;
+}
+
 .wrapper .input-box {
   position: relative;
   width: 100%;
@@ -146,12 +154,20 @@ body {
 @media (max-width: 768px) {
   .slogan {
     font-size: 36px;
-    top: 10vh;
+ sporting: 10vh;
   }
 
   .wrapper {
     width: 90%;
     padding: 20px 30px;
+  }
+
+  .wrapper h1 {
+    font-size: 32px;
+  }
+
+  .wrapper .feplix-text {
+    font-size: 21.33px; /* 32px / 1.5 */
   }
 
   .logo-top-left {
@@ -171,6 +187,14 @@ body {
   .slogan {
     font-size: 30px;
     top: 8vh;
+  }
+
+  .wrapper h1 {
+    font-size: 28px;
+  }
+
+  .wrapper .feplix-text {
+    font-size: 18.67px; /* 28px / 1.5 */
   }
 
   .logo-top-left {
