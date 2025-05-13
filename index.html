@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Feplix - Login Form</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 </head>
 <body>
-  <img src="Feplix-FEPLIX.png" alt="Feplix Logo Top Left" class="logo-top-left">
+  <img src="Feplix-FEPLIX.png" class="logo-top-left" alt="Feplix Logo Top Left"/>
   <div class="slogan">Unlimited movies, TV shows, and more</div>
   <div class="wrapper">
     <form id="login-form">
       <h1>Login <span class="feplix-text">to <span class="feplix-color">Feplix</span></span></h1>
       <div class="input-box">
-        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email" required />
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Password" required />
         <i class='bx bxs-lock-alt'></i>
       </div>
       <div class="remember-forgot">
-        <label><input type="checkbox">Remember Me</label>
+        <label><input type="checkbox"/>Remember Me</label>
         <a href="forgot-password.html">Forgot Password</a>
       </div>
       <button type="submit" class="btn">Login</button>
@@ -31,40 +31,39 @@
       </div>
     </form>
   </div>
-  <img src="Feplix-F.png" alt="Feplix Logo Bottom Right" class="logo-bottom-right">
+  <img src="Feplix-F.png" class="logo-bottom-right" alt="Feplix Logo Bottom Right"/>
+
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
   <script>
-    document.getElementById('login-form').addEventListener('submit', (e) => {
+    const firebaseConfig = {
+      apiKey: "AIzaSyCyE9XQwWP87JV9dz1z--890lM2RmP7k5w",
+      authDomain: "feplix-login-data-server-001.firebaseapp.com",
+      projectId: "feplix-login-data-server-001",
+      storageBucket: "feplix-login-data-server-001.firebasestorage.app",
+      messagingSenderId: "147675628478",
+      appId: "1:147675628478:web:171304d8e48b3f12406fef",
+      measurementId: "G-5XV4F9V8PP"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('login-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      const username = document.querySelector('input[placeholder="Username"]').value;
+      const email = document.querySelector('input[placeholder="Email"]').value;
       const password = document.querySelector('input[placeholder="Password"]').value;
-      if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
-        return;
-      }
-      console.log('Login Data:', { username, password });
-      alert('Login successful for ' + username);
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Login successful!");
+          // Redirect to homepage if needed
+        })
+        .catch(error => {
+          alert("Error: " + error.message);
+        });
     });
   </script>
-
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
-<script>
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-</script>
-
-
 </body>
 </html>
